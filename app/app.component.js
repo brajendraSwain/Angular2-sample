@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero.service', './heroes.component', './dashboard.component', 'angular2/router', './hero-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero.service', './heroes.component', './dashboard.component', 'angular2/router', 'angular2/http', './hero-detail.component', './httpTestService.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1, heroes_component_1, dashboard_component_1, router_1, hero_detail_component_1;
+    var core_1, hero_service_1, heroes_component_1, dashboard_component_1, router_1, http_1, hero_detail_component_1, httpTestService_component_1;
     var AppComponent;
     return {
         setters:[
@@ -29,10 +29,20 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (hero_detail_component_1_1) {
                 hero_detail_component_1 = hero_detail_component_1_1;
+            },
+            function (httpTestService_component_1_1) {
+                httpTestService_component_1 = httpTestService_component_1_1;
             }],
         execute: function() {
+            /**
+             * [Component description]
+             *
+             */
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Tour of Heroes';
@@ -40,11 +50,12 @@ System.register(['angular2/core', './hero.service', './heroes.component', './das
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  <h1>{{title}}</h1>\n  <nav>\n    <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n    <a [routerLink]=\"['Heroes']\">Heroes</a>\n  </nav>\n  <router-outlet></router-outlet>\n",
+                        template: "\n  <h1>{{title}}</h1>\n  <nav>\n    <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n    <a [routerLink]=\"['Heroes']\">Heroes</a>\n  </nav>\n  <http-test></http-test>\n  <router-outlet></router-outlet>\n",
                         styleUrls: ['app/app.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, httpTestService_component_1.httpTestComponent],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
+                            http_1.HTTP_PROVIDERS,
                             hero_service_1.HeroService
                         ]
                     }),
