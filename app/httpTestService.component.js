@@ -34,10 +34,21 @@ System.register(['angular2/core', './http-test.services'], function(exports_1, c
                     this._httpService.getTitle()
                         .subscribe(function (data) { console.log('data', data); _this.getData = JSON.stringify(data); }, function (error) { return console.log('error', error); }, function () { return console.log('finished'); });
                 };
+                httpTestComponent.prototype.onPostDetailsClick = function () {
+                    // this._httpService.postJSON()
+                    // 	.subscribe(
+                    // 	data => { console.log('data', data); this.postData = JSON.stringify(data) },
+                    // 	error => console.log('error', error),
+                    // 	() => console.log('finished')
+                    // 	);
+                    var _this = this;
+                    this._httpService.postJSON()
+                        .then(function (data) { console.log('data', data); _this.postData = JSON.stringify(data); });
+                };
                 httpTestComponent = __decorate([
                     core_1.Component({
                         selector: 'http-test',
-                        template: "\n\t\t<button (click) = \"onGetDetailsClick()\">Get Details</button>\n\t\t<p>{{getData}}</p>\n\t",
+                        template: "\n\t\t<button (click) = \"onGetDetailsClick()\">Get Details</button>\n\t\t<p>{{getData}}</p>\n\t\t<button (click) = \"onPostDetailsClick()\">Post Details</button>\n\t\t<p>{{postData}}</p>\n\t",
                         providers: [http_test_services_1.HTTPTestService]
                     }), 
                     __metadata('design:paramtypes', [http_test_services_1.HTTPTestService])

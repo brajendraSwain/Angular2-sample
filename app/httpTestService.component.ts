@@ -10,6 +10,8 @@ import {HTTPTestService} from './http-test.services';
 	template: `
 		<button (click) = "onGetDetailsClick()">Get Details</button>
 		<p>{{getData}}</p>
+		<button (click) = "onPostDetailsClick()">Post Details</button>
+		<p>{{postData}}</p>
 	`,
 	providers: [HTTPTestService]
 })
@@ -19,6 +21,7 @@ import {HTTPTestService} from './http-test.services';
  */
 export class httpTestComponent {
 	getData: string;
+	postData: string;
 
 	constructor(private _httpService: HTTPTestService){}
 
@@ -29,5 +32,17 @@ export class httpTestComponent {
 				error => console.log('error', error),
 				() => console.log('finished')
 				);
+	}
+
+	onPostDetailsClick() {
+		// this._httpService.postJSON()
+		// 	.subscribe(
+		// 	data => { console.log('data', data); this.postData = JSON.stringify(data) },
+		// 	error => console.log('error', error),
+		// 	() => console.log('finished')
+		// 	);
+
+		this._httpService.postJSON()
+			.then(data => { console.log('data', data); this.postData = JSON.stringify(data)});
 	}
 }

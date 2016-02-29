@@ -27,8 +27,34 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     this._http = _http;
                 }
                 HTTPTestService.prototype.getTitle = function () {
-                    return this._http.get('http://date.jsontest.com')
+                    return this._http.get('http://jsonplaceholder.typicode.com/posts/1')
                         .map(function (res) { return res.json(); });
+                };
+                HTTPTestService.prototype.postJSON = function () {
+                    // var url = 'http://jsonplaceholder.typicode.com/posts';
+                    // var json = JSON.stringify({
+                    // 	"userId": 10,
+                    // 	"id": 100,
+                    // 	"title": "at nam consequatur ea labore ea harum",
+                    // 	"body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
+                    // });
+                    // var headers = new Headers();
+                    // headers.append('Content-Type', 'application/json');
+                    // var options = {
+                    // 	headers: headers
+                    // };
+                    // var params = 'json = ' + json;
+                    // return this._http.post(url, params, options)
+                    // 		.map(res => res.json());
+                    return $.ajax('http://jsonplaceholder.typicode.com/posts', {
+                        method: 'POST',
+                        data: {
+                            "userId": 10,
+                            "id": 100,
+                            "title": "at nam consequatur ea labore ea harum",
+                            "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
+                        }
+                    });
                 };
                 HTTPTestService = __decorate([
                     core_1.Injectable(), 
